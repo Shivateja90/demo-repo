@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Corp Store Market Head - Login</title>
+  <style>
+    /* GLOBAL STYLES */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #007bff, #00d4ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    /* LOGIN CONTAINER */
+    .login-container {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      width: 320px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(-50px);
+      animation: fadeInUp 1s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .login-container h2 {
+      margin-bottom: 25px;
+      color: #007bff;
+      font-size: 24px;
+      letter-spacing: 1px;
+      animation: textGlow 2s infinite alternate;
+    }
+
+    @keyframes textGlow {
+      from { text-shadow: 0 0 5px #007bff; }
+      to { text-shadow: 0 0 20px #00d4ff; }
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline: none;
+      transition: all 0.3s;
+    }
+
+    .login-container input:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+    }
+
+    .login-container button {
+      width: 100%;
+      padding: 12px;
+      background: #007bff;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .login-container button:hover {
+      background: #0056b3;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .login-container p {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .login-container a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .login-container a:hover {
+      text-decoration: underline;
+    }
+
+    /* ANIMATED BACKGROUND ELEMENTS */
+    .bg-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.2;
+      animation: float 10s infinite;
+    }
+
+    .bg-circle:nth-child(1) {
+      width: 200px; height: 200px;
+      background: #00d4ff;
+      top: 10%; left: 5%;
+      animation-delay: 0s;
+    }
+
+    .bg-circle:nth-child(2) {
+      width: 150px; height: 150px;
+      background: #007bff;
+      bottom: 15%; right: 10%;
+      animation-delay: 3s;
+    }
+
+    .bg-circle:nth-child(3) {
+      width: 100px; height: 100px;
+      background: #00aaff;
+      top: 50%; left: 50%;
+      animation-delay: 6s;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); }
+      50% { transform: translateY(-30px) translateX(20px); }
+      100% { transform: translateY(0) translateX(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ANIMATED BACKGROUND ELEMENTS -->
+  <div class="bg-circle"></div>
+  <div class="bg-circle"></div>
+  <div class="bg-circle"></div>
+
+  <div class="login-container">
+    <h2>CV Corp Store Login</h2>
+    <form id="loginForm">
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <p>Don't have an account? <a href="C:\Users\hp\.vscode-insiders\login.html">Sign up</a></p>
+  </div>
+
+  <script>
+    const correctUsername = "SHIVA";
+    const correctPassword = "SHIVATEJA@02";
+
+    const loginForm = document.getElementById("loginForm");
+    loginForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      if (username === correctUsername && password === correctPassword) {
+        alert("Login successful!");
+        window.location.href = ".html"; // replace with target page
+      } else {
+        alert("Invalid username or password.");
+      }
+    });
+  </script>
+
+</body>
+</html>
+
+

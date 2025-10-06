@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Grocery Store</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f0f4f8;
+    }
+    header {
+      background: #28a745;
+      color: #fff;
+      padding: 15px;
+      text-align: center;
+    }
+    h1 { margin: 0; }
+    .container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+       .menu { 
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 15px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      color: rgb(16, 4, 4);
+      text-decoration: none;
+      font-weight: 600;
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: 0.3s;
+    }
+
+    .menu a:hover {
+      background-color: #9a0d0d;
+      color: #6c5ce7;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      width: 220px;
+      text-align: center;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+    .card:hover { transform: scale(1.05); }
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+    .card h3 { margin: 10px 0 5px; }
+    .card p { font-size: 14px; color: #555; padding: 0 10px; }
+    .rating { color: #f39c12; margin: 5px 0; }
+    .btn {
+      background: #28a745;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin: 10px 0 15px;
+      cursor: pointer;
+    }
+    #cart {
+      background: #fff;
+      margin: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    #cart h2 { margin-top: 0; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 6px 0; }
+    .removeBtn {
+      margin-left: 10px;
+      background: red;
+      color: white;
+      border: none;
+      padding: 2px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🛒 Grocery Store</h1>
+    <p>Select your groceries</p>
+  </header>
+<nav class="menu">
+      <a href="home.html"><i class="fa-solid fa-house"></i> HOME APPLICATIONS</a>
+      <a href="electronics.html"><i class="fa-solid fa-laptop-medical"></i> ELECTRONICS</a>
+      <a href="glocery.html"><i class="fa-solid fa-cart-shopping"></i> GROCERY</a>
+      <a href="mobile.html"><i class="fa-solid fa-mobile-screen-button"></i> MOBILE</a>
+      <a href="travel.html"><i class="fa-solid fa-plane"></i> TRAVEL</a>
+      <a href="C:\Users\hp\.vscode-insiders\.html"><i class="fa-solid fa-folder"></i> MENU</a>
+
+    </nav>
+  <div class="container">
+    <div class="card">
+      <img src="OIP (19).webp" alt="Rice">
+      <h3>Rice</h3>
+      <div class="rating">⭐⭐⭐⭐⭐</div>
+      <p>Premium basmati rice, 5kg pack.</p>
+      <button class="btn" onclick="addToCart('Rice', 500)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="C:\Users\hp\.vscode-insiders\l-intro-1684247612.jpg" alt="Milk">
+      <h3>Milk</h3>
+      <div class="rating">⭐⭐⭐⭐</div>
+      <p>Fresh cow milk, 1L pack.</p>
+      <button class="btn" onclick="addToCart('Milk', 40)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="C:\Users\hp\.vscode-insiders\700131-eggs-catimg-840x630.jpg" alt="Eggs">
+      <h3>Eggs</h3>
+      <div class="rating">⭐⭐⭐⭐⭐</div>
+      <p>Farm-fresh eggs, pack of 12.</p>
+      <button class="btn" onclick="addToCart('Eggs', 60)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="groceries-in-shopping-basket-ADAPFJ.jpg" alt="Vegetables">
+      <h3>Vegetables</h3>
+      <div class="rating">⭐⭐⭐⭐</div>
+      <p>Fresh seasonal vegetables, 1kg pack.</p>
+      <button class="btn" onclick="addToCart('Vegetables', 80)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="OIP (20).webp" alt="Fruits">
+      <h3>Fruits</h3>
+      <div class="rating">⭐⭐⭐⭐⭐</div>
+      <p>Assorted organic fruits, 1kg pack.</p>
+      <button class="btn" onclick="addToCart('Fruits', 150)">Add to Cart</button>
+    </div>
+    <div class="card">
+      <img src="IMG_7173-white-bread-2.jpg" alt="Bread">
+      <h3>Bread</h3>
+      <div class="rating">⭐⭐⭐⭐</div>
+      <p>Whole wheat bread, 400g pack.</p>
+      <button class="btn" onclick="addToCart('Bread', 35)">Add to Cart</button>
+    </div>
+  </div>
+
+  <div id="cart">
+    <h2>🛒 My Cart</h2>
+    <ul id="cartList"></ul>
+    <p><strong>Total Cost: ₹<span id="total">0</span></strong></p>
+  </div>
+
+  <script>
+    let cart = [];
+    let total = 0;
+
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      total += price;
+      updateCart();
+    }
+
+    function removeFromCart(index) {
+      total -= cart[index].price;
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartList = document.getElementById("cartList");
+      const totalEl = document.getElementById("total");
+      cartList.innerHTML = "";
+
+      cart.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.textContent = `${item.name} - ₹${item.price}`;
+        const btn = document.createElement("button");
+        btn.textContent = "Remove";
+        btn.className = "removeBtn";
+        btn.onclick = () => removeFromCart(index);
+        li.appendChild(btn);
+        cartList.appendChild(li);
+      });
+
+      totalEl.textContent = total;
+    }
+  </script>
+           <footer style="background:#2d2d2d; color:#ccc; padding:40px 20px; margin-top:50px; font-size:0.9rem;">
+    <div style="display:flex; flex-wrap:wrap; justify-content:space-around; max-width:1200px; margin:auto;">
+      
+      <div>
+        <h3 style="color:#fff;">ABOUT</h3>
+        <p><a href="#" style="color:#ccc; text-decoration:none;">Contact Us</a></p>
+        <p><a href="#" style="color:#ccc; text-decoration:none;">About Us</a></p>
+        <p><a href="#" style="color:#ccc; text-decoration:none;">Careers</a></p>
+        <p><a href="#" style="color:#ccc; text-decoration:none;">Press</a></p>
+      </div>
+
+      <div>
+        <h3 style="color:#fff;">HELP</h3>
+        <p><a href="#" style="color:#ccc; text-decoration:none;">Payments</a></p>
+        <p><a href="#" style="color:#ccc; text-decoration:none;">Shipping</a></p>
+        <p><a href="#" style="color:#ccc; text-decoration:none;">Cancellation & Returns</a></p>
+        <p><a href="#" style="color:#ccc; text-decoration:none;">FAQ</a></p>
+      </div>
+
+      <div>
+        <h3 style="color:#fff;">POLICY</h3>
+        <p><a href="#" style="color:#ccc; text-decoration:none;">Return Policy</a></p>
+        <p><a href="#" style="color:#ccc; text-decoration:none;">Terms of Use</a></p>
+        <p><a href="#" style="color:#ccc; text-decoration:none;">Privacy</a></p>
+        <p><a href="#" style="color:#ccc; text-decoration:none;">Security</a></p>
+      </div>
+
+      <div>
+        <h3 style="color:#fff;">Mail Us:</h3>
+        <p>Home Application Store Pvt Ltd,<br>
+        Tech Park, Bengaluru, 560103,<br>
+        Karnataka, India</p>
+      </div>
+
+      <div>
+        <h3 style="color:#fff;">Social</h3>
+        <p>
+          <i class="fa-brands fa-facebook"></i> Facebook<br>
+          <i class="fa-brands fa-x-twitter"></i> Twitter<br>
+          <i class="fa-brands fa-instagram"></i> Instagram<br>
+          <i class="fa-brands fa-youtube"></i> YouTube
+        </p>
+      </div>
+
+    </div>
+
+    <hr style="border:0.5px solid #444; margin:20px 0;">
+    <p style="text-align:center; color:#aaa;">© 2025 Home Application Store</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mobile Store</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f0f4f8;
+    color: #333;
+  }
+
+  header {
+    background: #0077b6;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+
+  header p {
+    margin: 5px 0 0;
+    font-size: 1.1rem;
+  }
+
+  .menu { 
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    background: #fff;
+    padding: 10px 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .menu a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: 0.3s;
+  }
+
+  .menu a:hover {
+    background: #0077b6;
+    color: #fff;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 30px 20px;
+  }
+
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    width: 220px;
+    text-align: center;
+    overflow: hidden;
+    transition: 0.3s;
+  }
+
+  .card:hover { transform: translateY(-5px); }
+
+  .card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+  }
+
+  .card h3 { margin: 12px 0 5px; font-size: 1.1rem; }
+  .card p { font-size: 0.9rem; color: #555; padding: 0 10px; }
+  .rating { color: #f39c12; margin: 5px 0; }
+
+  .btn {
+    background: #0077b6;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    margin: 10px 0 15px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+  }
+
+  .btn:hover { background: #005f8f; }
+
+  #cart {
+    background: #fff;
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+
+  #cart h2 { margin-top: 0; text-align: center; color: #0077b6; }
+  ul { list-style: none; padding: 0; }
+  li { margin: 10px 0; font-size: 0.95rem; display: flex; justify-content: space-between; align-items: center; }
+  .removeBtn {
+    background: red;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .removeBtn:hover { background: darkred; }
+
+  footer {
+    background: #2d2d2d;
+    color: #ccc;
+    padding: 40px 20px;
+    font-size: 0.9rem;
+  }
+
+  footer a { color: #ccc; text-decoration: none; }
+  footer a:hover { color: #fff; }
+
+  footer hr { border:0.5px solid #444; margin:20px 0; }
+
+  @media (max-width: 600px) {
+    .container { gap: 15px; padding: 20px 10px; }
+    .card { width: 45%; }
+  }
+
+  @media (max-width: 400px) {
+    .card { width: 90%; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>📱 Mobile Store</h1>
+  <p>Select your favorite phones</p>
+</header>
+
+<nav class="menu">
+  <a href="home.html"><i class="fa-solid fa-house"></i> HOME</a>
+  <a href="electronics.html"><i class="fa-solid fa-laptop-medical"></i> ELECTRONICS</a>
+  <a href="glocery.html"><i class="fa-solid fa-cart-shopping"></i> GROCERY</a>
+  <a href="mobile.html"><i class="fa-solid fa-mobile-screen-button"></i> MOBILE</a>
+  <a href="travel.html"><i class="fa-solid fa-plane"></i> TRAVEL</a>
+  <a href="menu.html"><i class="fa-solid fa-folder"></i> MENU</a>
+</nav>
+
+<div class="container">
+  <div class="card">
+    <img src="apple-iphone-16-pro-max.png" alt="iPhone 14">
+    <h3>iPhone 14</h3>
+    <div class="rating">⭐⭐⭐⭐⭐</div>
+    <p>128GB, Midnight color, iOS 16</p>
+    <button class="btn" onclick="addToCart('iPhone 14', 80000)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="61-Trif8A+L._AC_SL1500_.jpg" alt="Samsung Galaxy S23">
+    <h3>Samsung S23</h3>
+    <div class="rating">⭐⭐⭐⭐</div>
+    <p>256GB, Phantom Black, Android 13</p>
+    <button class="btn" onclick="addToCart('Samsung S23', 70000)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="OnePlus-13-official-image-4.jpg" alt="OnePlus 11">
+    <h3>OnePlus 11</h3>
+    <div class="rating">⭐⭐⭐⭐</div>
+    <p>12GB RAM, 256GB Storage, Android 13</p>
+    <button class="btn" onclick="addToCart('OnePlus 11', 55000)">Add to Cart</button>
+  </div>
+
+  <div class="card">
+    <img src="OIP (17).webp" alt="Google Pixel 8">
+    <h3>Pixel 8</h3>
+    <div class="rating">⭐⭐⭐⭐⭐</div>
+    <p>128GB, Android 14, Excellent Camera</p>
+    <button class="btn" onclick="addToCart('Pixel 8', 60000)">Add to Cart</button>
+  </div>
+</div>
+
+<div id="cart">
+  <h2>🛒 My Cart</h2>
+  <ul id="cartList"></ul>
+  <p style="text-align:center;"><strong>Total Cost: ₹<span id="total">0</span></strong></p> 
+  <button class="btn" onclick="alert('Proceeding to payment')"><a href="pay.html">Pay</a></button>
+</div>
+
+<script>
+let cart = [];
+let total = 0;
+
+function addToCart(name, price) {
+  cart.push({ name, price });
+  total += price;
+  updateCart();
+}
+
+function removeFromCart(index) {
+  total -= cart[index].price;
+  cart.splice(index, 1);
+  updateCart();
+}
+
+function updateCart() {
+  const cartList = document.getElementById("cartList");
+  const totalEl = document.getElementById("total");
+  cartList.innerHTML = "";
+
+  cart.forEach((item, index) => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} - ₹${item.price}`;
+    const btn = document.createElement("button");
+    btn.textContent = "Remove";
+    btn.className = "removeBtn";
+    btn.onclick = () => removeFromCart(index);
+    li.appendChild(btn);
+    cartList.appendChild(li);
+  });
+
+  totalEl.textContent = total;
+}
+</script>
+
+<footer>
+  <div style="display:flex; flex-wrap:wrap; justify-content:space-around; max-width:1200px; margin:auto;">
+    <div>
+      <h3>ABOUT</h3>
+      <p><a href="#">Contact Us</a></p>
+      <p><a href="#">About Us</a></p>
+      <p><a href="#">Careers</a></p>
+      <p><a href="#">Press</a></p>
+    </div>
+
+    <div>
+      <h3>HELP</h3>
+      <p><a href="#">Payments</a></p>
+      <p><a href="#">Shipping</a></p>
+      <p><a href="#">Cancellation & Returns</a></p>
+      <p><a href="#">FAQ</a></p>
+    </div>
+
+    <div>
+      <h3>POLICY</h3>
+      <p><a href="#">Return Policy</a></p>
+      <p><a href="#">Terms of Use</a></p>
+      <p><a href="#">Privacy</a></p>
+      <p><a href="#">Security</a></p>
+    </div>
+
+    <div>
+      <h3>Mail Us:</h3>
+      <p>Home Application Store Pvt Ltd,<br>Tech Park, Bengaluru, 560103,<br>Karnataka, India</p>
+    </div>
+
+    <div>
+      <h3>Social</h3>
+      <p>
+        <i class="fa-brands fa-facebook"></i> Facebook<br>
+        <i class="fa-brands fa-x-twitter"></i> Twitter<br>
+        <i class="fa-brands fa-instagram"></i> Instagram<br>
+        <i class="fa-brands fa-youtube"></i> YouTube
+      </p>
+    </div>
+  </div>
+
+  <hr>
+  <p style="text-align:center; color:#aaa;">© 2025 CV CORP STORE</p>
+</footer>
+</body>
+</html>
